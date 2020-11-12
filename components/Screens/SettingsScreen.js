@@ -1,12 +1,11 @@
 import React,{ useEffect } from 'react'
-import { Button, View, Text, StyleSheet, FlatList } from 'react-native';
+import { Button, View, Text } from 'react-native';
 import { globaleStyles } from '../Styles';
 import {auth} from 'firebase';
 import firebase from 'firebase';
 import {useState} from 'react';
 import { getThisAccountName } from '../helpers/Account';
 import { TextInput } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
 import {getThisUser} from '../helpers/Account';
 
 const SettingsScreen = () => {
