@@ -1,8 +1,59 @@
-import React, {useEffect, useState} from 'react';
+import React, {Component} from 'react';
 import { StyleSheet, Text, View, FlatList, Image, SafeAreaView} from 'react-native';
 import { Searchbar } from 'react-native-paper';
+import firebase from 'firebase';
+import ParkingSpotItems from "./ParkingSpotItems";
 
-const Parkingspot = () => {
+
+export default class ParkingSpots extends Component {
+    //Opretter en state som indeholder alle parkeringspladser
+    state = {
+        parkingSpots: {},
+    };
+
+    componentDidMount() {
+        firebase
+        .database()
+        .ref('/ParkingSpots')
+        .on('value', snapshot => {
+            this.setState({ parkingSpots: snapshot.val()});
+        });
+    }
+
+      //Opretter metode så man kan gå til parkeringspladsens detaljer 
+  handleParkingSpotSelect = id => {
+    console.log("IDDD", id)
+    this.props.navigation.navigate('ParkingDetails', { id });
+  };
+
+    render () {
+        const { parkingSpots } = this.setState;
+        //Hvis parkeringspladserne ikke er tilgængelige så returnerer den med en tekst
+        if (!parkingSpots) {
+            return null
+        }
+        const parkingArray = Object.values(parkingSpots);
+        const parkingKeys = Object.keys(parkingSpots);
+        //Returnerer en flatlist med de parkeringspladser som er lagt op
+        return(
+            <View>
+                <FlatList
+                data={parkingArray}
+                keyExtractor={(item, index) => parkingKeys[index]}
+                renderItem={({ item, index }) => (
+                    <ParkingSpotItems
+                    parking={item}
+                    id={parkingKeys[item]}
+                    onSelect={this.handleParkingSpotSelect}
+                    />
+                )}
+                />
+            </View>
+        )
+    }
+}
+
+ /*const Parkingspot = () => {
     const [listOfParkingSpots, setListOfParkingSpots ] = useState([])
 
     const parkingSpots = [
@@ -84,6 +135,7 @@ const Parkingspot = () => {
           </SafeAreaView>
         );
 }
+*/
 
 const styles = StyleSheet.create({
     container: {
@@ -104,4 +156,3 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Parkingspot;
