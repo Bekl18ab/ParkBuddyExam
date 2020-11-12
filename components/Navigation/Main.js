@@ -5,8 +5,7 @@ import HomeScreen from '../Screens/HomeScreen';
 import SettingsScreen from "../Screens/SettingsScreen";
 import Auth from "../Authentication/Auth";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import {MaterialIcons, Ionicons} from "react-native-vector-icons";
-import ChatScreen from "../Screens/ChatScreen";
+import {MaterialIcons} from "react-native-vector-icons";
 import Parkingspot from "../Screens/ParkingSpots";
 
 const Tab = createBottomTabNavigator();
@@ -32,14 +31,6 @@ const MainTabs = () => (
         options={{
             tabBarIcon: ({color}) =>(
             <Icon name="user-friends" size={30} color={color} />
-            )}}
-        />
-        <Tab.Screen
-        name="Chat"
-        component={ChatScreen}
-        options={{
-            tabBarIcon: ({color}) =>(
-            <Ionicons name="ios-chatbubbles" size={30} color={color} />
             )}}
         />
         <Tab.Screen

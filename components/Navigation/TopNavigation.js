@@ -6,7 +6,7 @@ import DetailsScreen from './../SubComponent/Details';
 
 const Stack = createStackNavigator()
 
-
+// Dette er kun for at se syntaks! Bruges ikke og kan slettes efter! 
 export default class TopNavigation extends Component {
     render() {
         return (

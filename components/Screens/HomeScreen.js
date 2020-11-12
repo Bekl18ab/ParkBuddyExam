@@ -6,6 +6,8 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import {Accuracy} from "expo-location";
 
+
+// Denne er kun midlertidig indtil vi får lavet en Google Maps! 
 export default class HomeScreen extends React.Component {
   mapViewRef = React.createRef();
 
