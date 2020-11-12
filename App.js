@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import firebase from "./firebase";
 import MainNavigation from './components/Navigation/Main';
 
+//Hej
+
 const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
