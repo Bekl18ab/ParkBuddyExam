@@ -7,6 +7,8 @@ import Auth from "../Authentication/Auth";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import {MaterialIcons} from "react-native-vector-icons";
 import Parkingspot from "../Screens/ParkingSpots/ParkingSpots";
+import TopNavigation from "./TopNavigation";
+import ParkingSpots from "../Screens/ParkingSpots/ParkingSpots";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +29,7 @@ const MainTabs = () => (
         />
         <Tab.Screen
         name="Parking Spots"
-        component={Parkingspot}
+        component={TopNavigation}
         options={{
             tabBarIcon: ({color}) =>(
             <Icon name="user-friends" size={30} color={color} />

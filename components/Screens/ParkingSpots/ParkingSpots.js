@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, FlatList, Image, SafeAreaView} from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, SafeAreaView, Button} from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import firebase from 'firebase';
 import ParkingSpotItems from "./ParkingSpotItems";
+import AddParkingSpots from "./AddParkingSpot";
+import navigation from '@react-navigation/stack';
 
 
 export default class ParkingSpots extends Component {
@@ -30,13 +32,16 @@ export default class ParkingSpots extends Component {
         const { parkingSpots } = this.setState;
         //Hvis parkeringspladserne ikke er tilgængelige så returnerer den med en tekst
         if (!parkingSpots) {
-            return null
+            return  <Button
+            title="Tilføj parkeringsplads"
+            onPress={() => navigation.navigate('AddParkingSpots')}/>
         }
         const parkingArray = Object.values(parkingSpots);
         const parkingKeys = Object.keys(parkingSpots);
         //Returnerer en flatlist med de parkeringspladser som er lagt op
         return(
             <View>
+               
                 <FlatList
                 data={parkingArray}
                 keyExtractor={(item, index) => parkingKeys[index]}
@@ -136,7 +141,7 @@ export default class ParkingSpots extends Component {
         );
 }
 */
-
+/*
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -155,4 +160,4 @@ const styles = StyleSheet.create({
         borderRadius:5
     }
 });
-
+*/
