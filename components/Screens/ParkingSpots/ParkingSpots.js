@@ -31,6 +31,7 @@ export default class ParkingSpots extends Component {
     render () {
         const { parkingSpots } = this.setState;
         //Hvis parkeringspladserne ikke er tilgængelige så returnerer den med en tekst
+        
         if (!parkingSpots) {
             return  <Button
             title="Tilføj parkeringsplads"
