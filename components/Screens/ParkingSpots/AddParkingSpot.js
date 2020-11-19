@@ -27,7 +27,7 @@ export default class AddParkingSpots extends Component {
       .push({adresse, pris, ledighed});
       Alert.alert('Parkeringsplads gemt!');
       this.setState({adresse: '', pris: '', ledighed: '',});
-      this.props.navigation.navigate('FindParking')
+      this.props.navigation.navigate('ParkingSpots')
     } catch (e) {
       console.log(e);
     }

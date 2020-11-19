@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, FlatList, Image, SafeAreaView, Button} from 'react-native';
-import { Searchbar } from 'react-native-paper';
 import firebase from 'firebase';
 import ParkingSpotItems from "./ParkingSpotItems";
-import AddParkingSpots from "./AddParkingSpot";
-import navigation from '@react-navigation/stack';
+import ParkingSpotDetails from './ParkingSpotDetails';
 
 
-export default class ParkingSpots extends Component {
+export default class ParkingSpot extends Component {
     //Opretter en state som indeholder alle parkeringspladser
     state = {
         parkingSpots: {},
@@ -23,38 +21,36 @@ export default class ParkingSpots extends Component {
     }
 
       //Opretter metode så man kan gå til parkeringspladsens detaljer 
-  handleParkingSpotSelect = id => {
-    console.log("IDDD", id)
-    this.props.navigation.navigate('ParkingDetails', { id });
-  };
+      handleParkingSpotSelect = id => {
+        console.log("IDDD", id)
+
+        this.props.navigation.navigate('ParkingSpotDetails', { id });
+      };
 
     render () {
-        const { parkingSpots } = this.setState;
+        const { parkingSpots } = this.state;
         //Hvis parkeringspladserne ikke er tilgængelige så returnerer den med en tekst
         
         if (!parkingSpots) {
-            return  <Button
-            title="Tilføj parkeringsplads"
-            onPress={() => navigation.navigate('AddParkingSpots')}/>
+            return null;
         }
         const parkingArray = Object.values(parkingSpots);
         const parkingKeys = Object.keys(parkingSpots);
         //Returnerer en flatlist med de parkeringspladser som er lagt op
         return(
             <View>
-               
                 <FlatList
                 data={parkingArray}
                 keyExtractor={(item, index) => parkingKeys[index]}
                 renderItem={({ item, index }) => (
-                    <ParkingSpotItems
-                    parking={item}
-                    id={parkingKeys[item]}
+                <ParkingSpotItems
+                    parkingDetails={item}
+                    id={parkingKeys[index]}
                     onSelect={this.handleParkingSpotSelect}
-                    />
-                )}
                 />
-            </View>
+            )}
+            />
+        </View>
         )
     }
 }

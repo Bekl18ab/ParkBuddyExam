@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import firebase from 'firebase';
-import { Button } from 'react-native-paper';
 
 export default class ParkingSpotDetails extends Component {
 
@@ -19,7 +18,7 @@ export default class ParkingSpotDetails extends Component {
       .database()
       .ref('/ParkingSpots/'+id)
       .on('value', parkingSpot => {
-        this.setState({details: parkingSpot.val()});
+        this.setState({parkingDetails: parkingSpot.val()});
       });
   };
     render () {
@@ -43,7 +42,6 @@ export default class ParkingSpotDetails extends Component {
           <Text style = {styles.label}> Ledighed: </Text>
           <Text style = {styles.value}> {parkingDetails.ledighed} </Text>
       </View>
-      <Button title="Reserver parkeringsplads"/>
     </View>
   );
   }
@@ -62,7 +60,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   label: { 
-    fontWeight: 300,
+    fontWeight: 200,
     fontWeight: 'bold',
     fontSize: 20,
   },

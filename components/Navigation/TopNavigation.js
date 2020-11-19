@@ -11,8 +11,8 @@ export default class TopNavigation extends Component {
     render() {
         return (  
             <Stack.Navigator style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Stack.Screen name="Tilføj parkeringsplads" component={AddParkingSpots} />
-                <Stack.Screen name="Parkeringspladser" component={ParkingSpots} />
+                <Stack.Screen name="Tilføj parkeringsplads" component={ParkingSpots} />
+                <Stack.Screen name="Parkeringspladser" component={AddParkingSpots} />
             </Stack.Navigator>
         );
     }
