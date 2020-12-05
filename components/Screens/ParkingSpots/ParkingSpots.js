@@ -21,22 +21,12 @@ export default class ParkingSpot extends Component {
     }
 
       //Opretter metode så man kan gå til parkeringspladsens detaljer 
-<<<<<<< HEAD
   handleParkingSpotSelect = parkingspotId => {
     this.props.navigation.navigate('ParkingDetails', { id:parkingspotId });
   };
 
     render () {
         // console.log(this.state.parkingSpots)
-=======
-      handleParkingSpotSelect = id => {
-        console.log("IDDD", id)
-
-        this.props.navigation.navigate('ParkingSpotDetails', { id });
-      };
-
-    render () {
->>>>>>> dec2ce86b24b1265e52260915a390e648bf8aa22
         const { parkingSpots } = this.state;
         //Hvis parkeringspladserne ikke er tilgængelige så returnerer den med en tekst
         
@@ -53,23 +43,11 @@ export default class ParkingSpot extends Component {
                 <FlatList
                 data={parkingArray}
                 keyExtractor={(item, index) => parkingKeys[index]}
-<<<<<<< HEAD
-                renderItem={({item, index}) => (
-                    
-                    <ParkingSpotItems
-                    parking={item}
-                    id={parkingKeys[index]}
-                    onSelect={this.handleParkingSpotSelect}
-                    />
-                    
-                )}
-=======
                 renderItem={({ item, index }) => (
                 <ParkingSpotItems
                     parkingDetails={item}
                     id={parkingKeys[index]}
                     onSelect={this.handleParkingSpotSelect}
->>>>>>> dec2ce86b24b1265e52260915a390e648bf8aa22
                 />
             )}
             />

@@ -16,19 +16,11 @@ export default class ParkingSpotDetails extends Component {
   //Opretter en metode som loader parkeringspladsen ved dens id i databasen
   loadParkingSpot = id => {
     firebase
-<<<<<<< HEAD
     .database()
     .ref('/ParkingSpots/'+id)
     .on('value', parkingSpot => {
       this.setState({details: parkingSpot.val()});
     });
-=======
-      .database()
-      .ref('/ParkingSpots/'+id)
-      .on('value', parkingSpot => {
-        this.setState({parkingDetails: parkingSpot.val()});
-      });
->>>>>>> dec2ce86b24b1265e52260915a390e648bf8aa22
   };
   render () {
     console.log(this.state)
@@ -70,11 +62,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   label: { 
-<<<<<<< HEAD
     
-=======
     fontWeight: 200,
->>>>>>> dec2ce86b24b1265e52260915a390e648bf8aa22
     fontWeight: 'bold',
     fontSize: 20,
   },
