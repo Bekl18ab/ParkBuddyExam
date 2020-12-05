@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import firebase from 'firebase';
-import { Button } from 'react-native-paper';
 
 export default class ParkingSpotDetails extends Component {
 
@@ -17,11 +16,19 @@ export default class ParkingSpotDetails extends Component {
   //Opretter en metode som loader parkeringspladsen ved dens id i databasen
   loadParkingSpot = id => {
     firebase
+<<<<<<< HEAD
     .database()
     .ref('/ParkingSpots/'+id)
     .on('value', parkingSpot => {
       this.setState({details: parkingSpot.val()});
     });
+=======
+      .database()
+      .ref('/ParkingSpots/'+id)
+      .on('value', parkingSpot => {
+        this.setState({parkingDetails: parkingSpot.val()});
+      });
+>>>>>>> dec2ce86b24b1265e52260915a390e648bf8aa22
   };
   render () {
     console.log(this.state)
@@ -45,7 +52,6 @@ export default class ParkingSpotDetails extends Component {
           <Text style = {styles.label}> Ledighed: </Text>
           <Text style = {styles.value}> {details.ledighed} </Text>
       </View>
-      <Button title="Reserver parkeringsplads"/>
     </View>
   );
   }
@@ -64,7 +70,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   label: { 
+<<<<<<< HEAD
     
+=======
+    fontWeight: 200,
+>>>>>>> dec2ce86b24b1265e52260915a390e648bf8aa22
     fontWeight: 'bold',
     fontSize: 20,
   },
