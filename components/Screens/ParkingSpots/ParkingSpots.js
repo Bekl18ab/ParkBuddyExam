@@ -23,22 +23,22 @@ export default class ParkingSpots extends Component {
     }
 
       //Opretter metode så man kan gå til parkeringspladsens detaljer 
-  handleParkingSpotSelect = id => {
-    console.log("IDDD", id)
-    this.props.navigation.navigate('ParkingDetails', { id });
+  handleParkingSpotSelect = parkingspotId => {
+    this.props.navigation.navigate('ParkingDetails', { id:parkingspotId });
   };
 
     render () {
-        const { parkingSpots } = this.setState;
+        // console.log(this.state.parkingSpots)
+        const { parkingSpots } = this.state;
         //Hvis parkeringspladserne ikke er tilgængelige så returnerer den med en tekst
         
         if (!parkingSpots) {
-            return  <Button
-            title="Tilføj parkeringsplads"
-            onPress={() => navigation.navigate('AddParkingSpots')}/>
+            return null;
         }
+        
         const parkingArray = Object.values(parkingSpots);
         const parkingKeys = Object.keys(parkingSpots);
+        
         //Returnerer en flatlist med de parkeringspladser som er lagt op
         return(
             <View>
@@ -46,12 +46,14 @@ export default class ParkingSpots extends Component {
                 <FlatList
                 data={parkingArray}
                 keyExtractor={(item, index) => parkingKeys[index]}
-                renderItem={({ item, index }) => (
+                renderItem={({item, index}) => (
+                    
                     <ParkingSpotItems
                     parking={item}
-                    id={parkingKeys[item]}
+                    id={parkingKeys[index]}
                     onSelect={this.handleParkingSpotSelect}
                     />
+                    
                 )}
                 />
             </View>

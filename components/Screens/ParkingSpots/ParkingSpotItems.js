@@ -8,12 +8,12 @@ export default class ParkingSpotItems extends Component {
         onSelect(id)
     };
     render () {
-        const { parkingDetails } = this.props;
+        const { parking } = this.props;
         return (
             //Laver et view som kan respondere når man trykker på parkeringspladsen og få info
             <TouchableOpacity style={styles.container} onPress={this.handlePress}>
                 <Text style={styles.label}>
-                    {parkingDetails.adresse} 
+                    {parking.adresse} 
                 </Text>
             </TouchableOpacity>
         );

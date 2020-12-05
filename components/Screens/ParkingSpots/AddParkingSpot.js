@@ -27,7 +27,7 @@ export default class AddParkingSpots extends Component {
       .push({adresse, pris, ledighed});
       Alert.alert('Parkeringsplads gemt!');
       this.setState({adresse: '', pris: '', ledighed: '',});
-      this.props.navigation.navigate('FindParking')
+      this.props.navigation.navigate('FindParking');
     } catch (e) {
       console.log(e);
     }
@@ -43,6 +43,12 @@ export default class AddParkingSpots extends Component {
             value={adresse}
             onChangeText={this.handleAdresseChange}
             style={styles.input}
+            onFocus={() => {
+              //
+            }}
+            onBlur={() => {
+              //
+            }}
           />
         </View>
         <View style={styles.row}>
@@ -51,6 +57,12 @@ export default class AddParkingSpots extends Component {
             value={pris}
             onChangeText={this.handlePrisChange}
             style={styles.input}
+            onFocus={() => {
+              //
+            }}
+            onBlur={() => {
+              //
+            }}
           />
         </View>
         <View style={styles.row}>
@@ -59,6 +71,12 @@ export default class AddParkingSpots extends Component {
             value={ledighed}
             onChangeText={this.handleLedighedChange}
             style={styles.input}
+            onFocus={() => {
+              //
+            }}
+            onBlur={() => {
+              //
+            }}
           />
         </View>
         <Button title="Tilføj parkeringsplads" onPress={this.handleSave}/>
