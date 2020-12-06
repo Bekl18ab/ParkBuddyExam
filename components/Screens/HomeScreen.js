@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Button, SafeAreaView } from 'react-native';
 import Constants from 'expo-constants';
-import MapView, { Marker } from 'react-native-maps';
+// import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import {Accuracy} from "expo-location";
@@ -128,7 +128,7 @@ export default class HomeScreen extends React.Component {
           placeholder={"Find by postal code"}>
           </TextInput>
           {this.renderCurrentLocation()}
-          <MapView
+          {/* <MapView
               provider="google"
               style={styles.map}
               ref={this.mapViewRef}
@@ -190,7 +190,7 @@ export default class HomeScreen extends React.Component {
                 )}
                 <Button title="close" onPress={this.closeInfoBox} />
               </View>
-          )}
+          )} */}
         </SafeAreaView>
     );
   }

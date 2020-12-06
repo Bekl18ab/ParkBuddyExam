@@ -1,5 +1,5 @@
 import React,{Component, useEffect } from 'react'
-import { Button, View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { Button, View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import { globaleStyles } from '../Styles';
 import {auth} from 'firebase';
 import firebase from 'firebase';
@@ -10,67 +10,49 @@ import {getThisUser} from '../helpers/Account';
 import { Ionicons } from '@expo/vector-icons';
 
 
-//Funktion til at fremvise FlatList
-
-function Item({ item }) {
-    return (
-      <View style={styles.listItem}>
-
-          <TouchableOpacity style={{}}>
-          <Text style={{fontWeight:"bold"}}>{"\n"}{item.setting}</Text>
-          </TouchableOpacity>
-
-        <View style={{alignItems:"center",flex:1}}>
-        </View>
-
-        <TouchableOpacity style={styles.touch}>
-            {item.button}
-        </TouchableOpacity>
-
-
-      </View>
-    );
-  }
-
 export default class SettingsScreen extends Component {
 
-    state = {
-
-        // Data oprettes men skal senere hentes fra Firebase database
-         
-          data:[
-              {
-                  "setting": "Personlige Oplysninger",
-                  "button": <Ionicons name="ios-person" size={24}/>
-              },
-              {
-                  
-                  "setting": "Betalinger og udbetalinger",
-                  "button": <Ionicons name="ios-card" size={24}/>
-              
-              },
-              {
-                 
-                  "setting": "Kontoindstillinger",
-                  "button": <Ionicons name="ios-cog" size={24}/>
-                  
-              }
-          ]
+        static navigationOptions= {
+            title:'Settings'
         }
+
+        handleGoToProfile = () => {
+            this.props.navigation.navigate('Profile');
+        };
+
+    
         
+        logOff = () => {
+            auth()
+            .signOut()
+            .then(() => console.log('User signed out!'));
+        }
         
         // Oprettelse af FlatList, hvor den gemmer elementer i Item, som så kan bruges oppe i fremvisning af FlatListe funktionen
   
         render(){
-
+        
           return (
             <View style={styles.container}>
-              <FlatList
-                style={{flex:1}}
-                data={this.state.data}
-                renderItem={({ item }) => <Item item={item}/>}
-                keyExtractor={item => item.item}
-              />
+                <Button
+                    title={"Personlige Oplysninger"}
+                    onPress={this.handleGoToProfile}
+                >
+                </Button>
+
+                <Button
+                    title={"Betalinger og udbetalinger"}
+                    onPress={() => navigator}
+                >
+                </Button>
+
+                <Button
+                    title={"Log Off"}
+                    onPress={this.logOff}
+                >
+
+                </Button>
+                
             </View>
           );
         }
@@ -78,7 +60,6 @@ export default class SettingsScreen extends Component {
 
 
 /*
-
 const SettingsScreen = () => {
     const [ accountName, setAccountName ] = useState("")
 
