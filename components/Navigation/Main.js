@@ -28,7 +28,7 @@ const MainTabs = () => (
             )}}
         />
         <Tab.Screen
-        name="Parking Spots"
+        name="Parkingspots"
         component={TopNavigation}
         options={{
             tabBarIcon: ({color}) =>(

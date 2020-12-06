@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import firebase from 'firebase';
-import { Button } from 'react-native-paper';
 
 export default class ParkingSpotDetails extends Component {
 
     componentDidMount() {
-        const id = this.props.navigation.getParam('id');
+        const id = this.props.route.params.id;
         this.loadParkingSpot(id);
     }
   //Opretter en state som er den overodnet parkering
   state = {
     parkingDetails: null,
   }
+
   //Opretter en metode som loader parkeringspladsen ved dens id i databasen
   loadParkingSpot = id => {
     firebase
-      .database()
-      .ref('/ParkingSpots/'+id)
-      .on('value', parkingSpot => {
-        this.setState({details: parkingSpot.val()});
-      });
+    .database()
+    .ref('/ParkingSpots/'+id)
+    .on('value', parkingSpot => {
+      this.setState({parkingDetails: parkingSpot.val()});
+    });
   };
-    render () {
+  render () {
+    console.log(this.state)
       const { parkingDetails } = this.state;
       //Hvis parkering ikke er tilgængelig så returnerer den med en tekst
       if (!parkingDetails) {
@@ -43,7 +44,6 @@ export default class ParkingSpotDetails extends Component {
           <Text style = {styles.label}> Ledighed: </Text>
           <Text style = {styles.value}> {parkingDetails.ledighed} </Text>
       </View>
-      <Button title="Reserver parkeringsplads"/>
     </View>
   );
   }
@@ -62,12 +62,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   label: { 
-    fontWeight: 300,
+    
+    fontWeight: 200,
     fontWeight: 'bold',
     fontSize: 20,
   },
   value: { 
-    fontWeight: 300,
+    
     fontSize: 20,
 
   },

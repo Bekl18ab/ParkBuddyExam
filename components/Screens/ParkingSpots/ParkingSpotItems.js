@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     },
     label: { 
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 10
+        
      },
   });
