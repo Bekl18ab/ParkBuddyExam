@@ -19,14 +19,14 @@ export default class ParkingSpotDetails extends Component {
     .database()
     .ref('/ParkingSpots/'+id)
     .on('value', parkingSpot => {
-      this.setState({details: parkingSpot.val()});
+      this.setState({parkingDetails: parkingSpot.val()});
     });
   };
   render () {
     console.log(this.state)
-      const { details } = this.state;
+      const { parkingDetails } = this.state;
       //Hvis parkering ikke er tilgængelig så returnerer den med en tekst
-      if (!details) {
+      if (!parkingDetails) {
         return <Text> Ingen tilgængelig data</Text>;
       }
     //Returnerer views som viser tekst med det data som er knyttet til parkeringsplads
@@ -34,15 +34,15 @@ export default class ParkingSpotDetails extends Component {
     <View style={styles.container}>
       <View style={styles.row}>
           <Text style = {styles.label}> Adresse: </Text>
-          <Text style = {styles.value}> {details.adresse} </Text>
+          <Text style = {styles.value}> {parkingDetails.adresse} </Text>
       </View>
       <View style={styles.row}>
           <Text style = {styles.label}> Pris: </Text>
-          <Text style = {styles.value}> {details.pris} </Text>
+          <Text style = {styles.value}> {parkingDetails.pris} </Text>
       </View>
       <View style={styles.row}>
           <Text style = {styles.label}> Ledighed: </Text>
-          <Text style = {styles.value}> {details.ledighed} </Text>
+          <Text style = {styles.value}> {parkingDetails.ledighed} </Text>
       </View>
     </View>
   );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Button, SafeAreaView } from 'react-native';
 import Constants from 'expo-constants';
-import MapView, { Marker} from 'react-native-maps';
+// import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import {Accuracy} from "expo-location";
@@ -9,9 +9,6 @@ import { TextInput } from 'react-native-paper';
 import { TabActions } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
-import { StackNavigator, NavigationActions, navigation } from '@react-navigation/stack';
-import ParkingSpots from './ParkingSpots/ParkingSpots';
-import TopNavigation from '../Navigation/TopNavigation';
 
 // Denne er kun midlertidig indtil vi får lavet en Google Maps! 
 export default class HomeScreen extends React.Component {
@@ -33,7 +30,7 @@ export default class HomeScreen extends React.Component {
     //Ser på koordinaten af den valgte markør
     selectedCoordinate: null,
     //Finder adressen på den valgte markør
-    selectedAddress: null
+    selectedAddress: null,
   };
 
   getLocationPermission = async () => {
@@ -119,30 +116,19 @@ export default class HomeScreen extends React.Component {
     );
   };
 
-      // goToParkingspots = () => {
-      //   this.props.navigation.navigate("TopNavigation",{screen: "Parkeringspladser"});
-      // };
-      
-
   render() {
     const {userMarkerCoordinates, selectedCoordinate, selectedAddress, currentLocation
     } = this.state;
     //Navigation??
-    // const jumpToAction = TabActions.jumpTo('Parkingspots', { component: ParkingSpots });
-    // const jumpToAction = () => { TabActions.jumpTo('Parkingspots', { ParkingSpots });}
-    // const goToParkingspots = () => {
-    //   NavigationActions.navigate({routeName: ParkingSpots});
-    // }
+    // const jumpToAction = TabActions.jumpTo('Parkingspots', { component: 'Parkingspot' });
 
-    
-    
     return (
         <SafeAreaView style={styles.container}>
           <TextInput
           placeholder={"Find by postal code"}>
           </TextInput>
           {this.renderCurrentLocation()}
-          <MapView
+          {/* <MapView
               provider="google"
               style={styles.map}
               ref={this.mapViewRef}
@@ -158,8 +144,8 @@ export default class HomeScreen extends React.Component {
             <Marker
                 coordinate={{ latitude: 55.851695, longitude: 12.099419 }}
                 title="Min parkeringsplads"
-                description="Du kan holde i min indkørsel" 
-                onPress={() => this.props.navigation.navigate('Parkingspots', {screen:"Parkingspots"})}             
+                description="Du kan holde i min indkørsel"
+                // onPress={() => navigation.dispatch(jumpToAction)}
             >
               <FontAwesome5Icon name={"parking"} size={26} color={"lightgreen"} />
             </Marker>
@@ -204,7 +190,7 @@ export default class HomeScreen extends React.Component {
                 )}
                 <Button title="close" onPress={this.closeInfoBox} />
               </View>
-          )}
+          )} */}
         </SafeAreaView>
     );
   }
