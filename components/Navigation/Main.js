@@ -1,11 +1,11 @@
 import React from "react"
 import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from '../Screens/HomeScreen';
-import SettingsScreen from "../Screens/SettingsScreen";
+import StackNavigation from "./StackNavigation";
 import Auth from "../Authentication/Auth";
 import TopNavigation from "./TopNavigation";
-import ParkingSpots from "../Screens/ParkingSpots/ParkingSpots";
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import ParkingSpots from "../Screens/ParkingSpots/ParkingSpots";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -44,7 +44,7 @@ function MyTabs() {
             />
             <Tab.Screen
                 name="Profil"
-                component={SettingsScreen}
+                component={StackNavigation}
                 options={{
                     tabBarLabel: 'Settings',
                     tabBarColor: '#2548a2',
@@ -57,41 +57,6 @@ function MyTabs() {
     );
 }
 
-// const Tab = createBottomTabNavigator();
-//
-// const MainTabs = () => (
-//     <Tab.Navigator tabBarOptions={{
-//         activeTintColor: 'tomato',
-//         inactiveTintColor: 'gray',
-//         labelStyle: {fontSize: 22, padding: 6},
-//         style: {height: 80}
-//       }}>
-//         <Tab.Screen
-//         name="Home"
-//         component={HomeScreen}
-//         options={{
-//             tabBarIcon: ({color}) =>(
-//             <Icon name="home" size={30} color={color} />
-//             )}}
-//         />
-//         <Tab.Screen
-//         name="Parkingspots"
-//         component={TopNavigation}
-//         options={{
-//             tabBarIcon: ({color}) =>(
-//             <Icon name="user-friends" size={30} color={color} />
-//             )}}
-//         />
-//         <Tab.Screen
-//         name="Settings"
-//         component={SettingsScreen}
-//         options={{
-//             tabBarIcon: ({color}) =>(
-//             <MaterialIcons name="settings" size={30} color={color} />
-//             )}}
-//         />
-//     </Tab.Navigator>
-// )
 
 const MainNavigation = ({auth}) => {
     return (
@@ -109,3 +74,4 @@ const MainNavigation = ({auth}) => {
 }
 
 export default MainNavigation
+
