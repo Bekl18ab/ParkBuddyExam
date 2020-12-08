@@ -5,11 +5,12 @@ import {
     TextInput,
     ActivityIndicator,
     StyleSheet,
+    Button
 } from 'react-native';
 import firebase from 'firebase';
 import MainNavigation from '../Navigation/Main';
 import {globalStyles} from '../Styles';
-import {TouchableOpacity} from "react-native-web";
+// import {TouchableOpacity} from "react-native-web";
 
 export default class Login extends React.Component {
     state = {
@@ -83,10 +84,16 @@ export default class Login extends React.Component {
     renderButton = () => {
         const {isLoading} = this.state;
         if (isLoading) {
-            return <ActivityIndicator/>;
-        }
-        return <TouchableOpacity style={globalStyles.button} onPress={this.handleSubmit}>
+            return (
+            <View>
+            <ActivityIndicator/>
+            </View>
+            )}
+        return (
+        <View>
+        <Button title="Learn More" style={globalStyles.button} onPress={this.handleSubmit}>
             <Text style={globalStyles.buttonText}>Log ind</Text>
-        </TouchableOpacity>
-    };
+        </Button>
+        </View>
+        )};
 }

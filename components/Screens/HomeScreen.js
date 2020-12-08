@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, SafeAreaView} from 'react-native';
+import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native';
 import Constants from 'expo-constants';
 // import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
@@ -7,7 +7,7 @@ import * as Permissions from 'expo-permissions';
 import {Accuracy} from "expo-location";
 import {TextInput} from 'react-native-paper';
 import {globalStyles} from '../Styles';
-import {TouchableOpacity} from "react-native-web";
+import {FontAwesome5Icon, MaterialCommunityIcons} from "react-native-vector-icons"
 
 // Denne er kun midlertidig indtil vi får lavet en Google Maps!
 export default class HomeScreen extends React.Component {
@@ -188,7 +188,7 @@ export default class HomeScreen extends React.Component {
                     onPress={() => this.handleSelectMarker(coordinate)}
                 />
             ))}
-          </MapView>
+          </MapView> */}
           {selectedCoordinate && (
               <View style={styles.infoBox}>
                 <Text style={styles.infoText}>
@@ -201,7 +201,7 @@ export default class HomeScreen extends React.Component {
                 )}
                 <Button title="close" onPress={this.closeInfoBox} />
               </View>
-          )} */}
+          )}
                     </SafeAreaView>
                 </View>
             </View>

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useMemo, useState} from 'react';
 import {StyleSheet, Text, View, FlatList, Image, SafeAreaView, Button} from 'react-native';
 import firebase from 'firebase';
 import ParkingSpotItems from "./ParkingSpotItems";
@@ -7,56 +7,45 @@ import {globalStyles} from "../../Styles";
 import ParkingNavigation from "../../Navigation/ParkingNavigation";
 
 
-export default class ParkingSpot extends Component {
-    //Opretter en state som indeholder alle parkeringspladser
-    state = {
-        parkingSpots: {},
-    };
-
-    componentDidMount() {
+const ParkingSpot = ({navigation}) => {
+    const [parkingSpots, setParkingSpots] = useState([]);
+    
+    useEffect(() => {
         firebase
             .database()
             .ref('/ParkingSpots')
             .on('value', snapshot => {
-                this.setState({parkingSpots: snapshot.val()});
+                setParkingSpots(snapshot.val())
             });
+    }, [])
+
+    const handleParkingSpotSelect = (parkingSpotId) => {
+        navigation.navigate('ParkingDetails', {id: parkingSpotId});
+
     }
 
-    //Opretter metode så man kan gå til parkeringspladsens detaljer
-    handleParkingSpotSelect = parkingspotId => {
-        this.props.navigation.navigate('ParkingDetails', {id: parkingspotId});
-    };
-
-    render() {
-        // console.log(this.state.parkingSpots)
-        const {parkingSpots} = this.state;
-        //Hvis parkeringspladserne ikke er tilgængelige så returnerer den med en tekst
-
-        if (!parkingSpots) {
-            return null;
-        }
-
-        const parkingArray = Object.values(parkingSpots);
-        const parkingKeys = Object.keys(parkingSpots);
-
-        //Returnerer en flatlist med de parkeringspladser som er lagt op
-        return (
+    
+    return (
+        <>
             <View style={globalStyles.content}>
                 <FlatList
-                    data={parkingArray}
-                    keyExtractor={(item, index) => parkingKeys[index]}
+                    data={Object.values(parkingSpots)}
+                    keyExtractor={(item, index) => Object.keys(parkingSpots)[index]}
                     renderItem={({item, index}) => (
                         <ParkingSpotItems
                             parkingDetails={item}
-                            id={parkingKeys[index]}
-                            onSelect={this.handleParkingSpotSelect}
+                            id={Object.keys(parkingSpots)[index]}
+                            onSelect={handleParkingSpotSelect}
                         />
                     )}
                 />
-            </View>
-        )
-    }
+            </View>   
+        </>
+    )
+    
 }
+
+export default ParkingSpot
 
 /*const Parkingspot = () => {
    const [listOfParkingSpots, setListOfParkingSpots ] = useState([])

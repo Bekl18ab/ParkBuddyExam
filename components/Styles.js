@@ -21,25 +21,25 @@ export const globalStyles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        paddingVertical: 20,
+        paddingVertical: 50,
         alignItems: 'center',
         backgroundColor: '#255CA2',
     },
     headerTitle: {
         color: '#fff',
-        fontFamily: "SignPainter",
+        // fontFamily: "SignPainter",
         fontSize: 30,
         fontWeight: "bold",
     },
     button: {
         backgroundColor: '#FF7D2C',
-        marginHorizontal: 2,
-        marginVertical: 10,
-        padding: 10,
+        marginHorizontal: 5,
+        marginVertical: 20,
+        padding: 30,
         alignItems: 'center',
     },
     buttonText: {
-        color: '#fff',
+        color: "white",
         fontWeight: "bold",
         textTransform: "uppercase"
     },

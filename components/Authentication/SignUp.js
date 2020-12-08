@@ -3,12 +3,12 @@ import {
   Text,
   View,
   TextInput,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity
 } from 'react-native';
 import firebase from 'firebase';
 import { globalStyles } from '../Styles';
 import {getThisUser} from '../helpers/Account';
-import {TouchableOpacity} from "react-native-web";
 
 export default class SignUpForm extends React.Component {
   state = {
@@ -96,10 +96,16 @@ export default class SignUpForm extends React.Component {
   renderButton = () => {
     const { isLoading } = this.state;
     if (isLoading) {
-      return <ActivityIndicator />;
-    }
-    return <TouchableOpacity style={globalStyles.button} onPress={this.handleSubmit}>
+      return (
+      <View>
+      <ActivityIndicator />
+      </View>
+      )}
+    return (
+    <View>
+     <TouchableOpacity style={globalStyles.button} onPress={this.handleSubmit}>
       <Text style={globalStyles.buttonText}>Opret bruger</Text>
     </TouchableOpacity>
-  };
+    </View>
+    )};
 }

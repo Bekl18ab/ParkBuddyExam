@@ -3,7 +3,6 @@ import {Button, View, Text} from 'react-native';
 import {createStackNavigator} from "@react-navigation/stack";
 import ParkingSpots from './../Screens/ParkingSpots/ParkingSpots';
 import ParkingSpotDetails from '../Screens/ParkingSpots/ParkingSpotDetails';
-import {globalStyles} from '../Styles';
 
 const Stack = createStackNavigator()
 
