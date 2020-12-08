@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import firebase from 'firebase';
 import {globalStyles} from "../../Styles";
 
@@ -34,7 +34,7 @@ export default class ParkingSpotDetails extends Component {
         }
         //Returnerer views som viser tekst med det data som er knyttet til parkeringsplads
         return (
-            <View style={globalStyles.container}>
+            <ScrollView style={globalStyles.container}>
                 <View style={styles.row}>
                     <Text style={styles.label}> Adresse: </Text>
                     <Text style={styles.value}> {parkingDetails.adresse} </Text>
@@ -47,7 +47,7 @@ export default class ParkingSpotDetails extends Component {
                     <Text style={styles.label}> Ledighed: </Text>
                     <Text style={styles.value}> {parkingDetails.ledighed} </Text>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }
