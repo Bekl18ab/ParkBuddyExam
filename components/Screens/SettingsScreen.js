@@ -16,8 +16,13 @@ export default class SettingsScreen extends Component {
             title:'Settings'
         }
 
-        handleGoToProfile = () => {
+        /*handleGoToProfile = () => {
             this.props.navigation.navigate('Profile');
+        }; */
+
+        //Opretter metode så man kan gå til parkeringspladsens detaljer 
+        handleGoToProfile = parkingspotId => {
+        this.props.navigation.navigate('Profile', { id:parkingspotId });
         };
 
     
