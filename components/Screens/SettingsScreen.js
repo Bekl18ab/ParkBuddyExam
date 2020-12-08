@@ -24,10 +24,15 @@ export default class SettingsScreen extends Component {
             this.props.navigation.navigate('Profile');
         }; */
 
-        //Opretter metode så man kan gå til parkeringspladsens detaljer 
+        
         handleGoToProfile = parkingspotId => {
         this.props.navigation.navigate('Profile', { id:parkingspotId });
         };
+
+        
+        handleGoToPayments = parkingspotId => {
+            this.props.navigation.navigate('Payments', { id:parkingspotId });
+            };
 
     logOff = () => {
         auth()
@@ -48,7 +53,7 @@ export default class SettingsScreen extends Component {
                     <TouchableOpacity style={globalStyles.button} onPress={this.handleGoToProfile}>
                         <Text style={globalStyles.buttonText}>Personlige Oplysninger</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={globalStyles.button} onPress={() => navigator}>
+                    <TouchableOpacity style={globalStyles.button} onPress={this.handleGoToPayments}>
                         <Text style={globalStyles.buttonText}>Betalinger og udbetalinger</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={globalStyles.button} onPress={this.logOff}>
