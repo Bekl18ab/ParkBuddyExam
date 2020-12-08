@@ -1,16 +1,89 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import Constants from 'expo-constants';
+import React from "react";
 
-//Here is all the stylings 
+/* Eksempel på implementering af header
+import {globalStyles} from "../../Styles";
 
+<View style={globalStyles.container}>
+    <View style={globalStyles.header}>
+        <Text style={globalStyles.headerTitle}>ParkBuddy</Text>
+    </View>
+    <View style={globalStyles.content}>
+        //Content goes here
+    </View>
+</View>
+*/
+
+//Updated global styling
+export const globalStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    header: {
+        paddingVertical: 20,
+        alignItems: 'center',
+        backgroundColor: '#255CA2',
+    },
+    headerTitle: {
+        color: '#fff',
+        fontFamily: "SignPainter",
+        fontSize: 30,
+        fontWeight: "bold",
+    },
+    button: {
+        backgroundColor: '#FF7D2C',
+        marginHorizontal: 2,
+        marginVertical: 10,
+        padding: 10,
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: "bold",
+        textTransform: "uppercase"
+    },
+    content: {
+        flex: 1,
+        backgroundColor: '#F5F5F5',
+        paddingHorizontal: 15,
+        paddingVertical: 30,
+    },
+    error: {
+        color: 'red',
+    },
+    inputField: {
+        borderWidth: 1,
+        marginVertical: 10,
+        padding: 10,
+    },
+    label:{
+        shadowColor: "#000000",
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
+        backgroundColor: '#fff',
+        marginHorizontal: 2,
+        marginVertical: 7,
+        padding: 10,
+    },
+    Text: {
+        fontFamily: "poppins",
+        fontSize: 15,
+    },
+    h1: {fontSize: 30, fontWeight: "bold"},
+    h2: {fontSize: 26, fontWeight: "bold"},
+    h3: {fontSize: 22, fontWeight: "bold"},
+    h4: {fontSize: 18, fontWeight: "bold"},
+})
+
+//Initial global styling
 export const globaleStyles = StyleSheet.create({
     styleHome: {
-        fontFamily: "verdana",
         fontSize: 50,
         fontWeight: "bold",
     },
     homeView: {
-        flex: 1, 
+        flex: 1,
         backgroundColor: "#b5d7de",
         alignItems: 'center',
         padding: 20
@@ -32,14 +105,6 @@ export const globaleStyles = StyleSheet.create({
         paddingTop: Constants.statusBarHeight,
         backgroundColor: '#ecf0f1',
         padding: 8,
-    },
-    error: {
-        color: 'red',
-    },
-    inputField: {
-        borderWidth: 1,
-        margin: 10,
-        padding: 10,
     },
 
     // Not working on UserItem  - hence I've created it locally
