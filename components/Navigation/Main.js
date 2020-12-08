@@ -1,16 +1,14 @@
 import React from "react"
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from '../Screens/HomeScreen';
 import StackNavigation from "./StackNavigation";
 import Auth from "../Authentication/Auth";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import {MaterialIcons} from "react-native-vector-icons";
-import Parkingspot from "../Screens/ParkingSpots/ParkingSpots";
 import TopNavigation from "./TopNavigation";
 import ParkingSpots from "../Screens/ParkingSpots/ParkingSpots";
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const MainTabs = () => (
     <Tab.Navigator tabBarOptions={{
@@ -49,14 +47,14 @@ const MainTabs = () => (
 const MainNavigation = ({auth}) => {
     return (
         <>
-        {/* Ternary expression (simpel syntaks for en if-else. ? betyder 'hvis true'. : betyder 'hvis false') */}
-        {auth ? (
-            <NavigationContainer>
-                <MainTabs />
-            </NavigationContainer>
-        ) : (
-            <Auth />
-        )}
+            {/* Ternary expression (simpel syntaks for en if-else. ? betyder 'hvis true'. : betyder 'hvis false') */}
+            {auth ? (
+                <NavigationContainer>
+                    <MyTabs/>
+                </NavigationContainer>
+            ) : (
+                <Auth/>
+            )}
         </>
     )
 }

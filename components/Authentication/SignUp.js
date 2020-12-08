@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {
-  Button,
   Text,
   View,
   TextInput,
   ActivityIndicator
 } from 'react-native';
 import firebase from 'firebase';
-import { globaleStyles } from '../Styles';
+import { globalStyles } from '../Styles';
 import {getThisUser} from '../helpers/Account';
+import {TouchableOpacity} from "react-native-web";
 
 export default class SignUpForm extends React.Component {
   state = {
@@ -44,7 +44,7 @@ export default class SignUpForm extends React.Component {
       firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
         firebase.database().ref('accounts/'+getThisUser()).set({
           accountName: accountName
-        });   
+        });
       });
 
       this.endLoading();
@@ -63,28 +63,29 @@ export default class SignUpForm extends React.Component {
 
 
     return (
-      <View style={{marginTop: 140}}>
+      <View>
+        <Text style={globalStyles.h1}>Opret en bruger</Text>
         <TextInput
           placeholder="account name"
           value={accountName}
           onChangeText={this.handleChangeAccountName}
-          style={globaleStyles.inputField}
+          style={globalStyles.label}
         />
         <TextInput
           placeholder="email"
           value={email}
           onChangeText={this.handleChangeEmail}
-          style={globaleStyles.inputField}
+          style={globalStyles.label}
         />
         <TextInput
           placeholder="password"
           value={password}
           onChangeText={this.handleChangePassword}
           secureTextEntry
-          style={globaleStyles.inputField}
+          style={globalStyles.label}
         />
         {errorMessage && (
-          <Text style={globaleStyles.error}>Error: {errorMessage}</Text>
+          <Text style={globalStyles.error}>Error: {errorMessage}</Text>
         )}
         {this.renderButton()}
       </View>
@@ -97,6 +98,8 @@ export default class SignUpForm extends React.Component {
     if (isLoading) {
       return <ActivityIndicator />;
     }
-    return <Button onPress={this.handleSubmit} title="Create user" />;
+    return <TouchableOpacity style={globalStyles.button} onPress={this.handleSubmit}>
+      <Text style={globalStyles.buttonText}>Opret bruger</Text>
+    </TouchableOpacity>
   };
 }
