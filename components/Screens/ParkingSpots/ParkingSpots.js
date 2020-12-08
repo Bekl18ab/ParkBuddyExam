@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, FlatList, Image, SafeAreaView, Button} from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, SafeAreaView, Button, Linking} from 'react-native';
 import firebase from 'firebase';
 import ParkingSpotItems from "./ParkingSpotItems";
 import ParkingSpotDetails from './ParkingSpotDetails';
@@ -20,9 +20,9 @@ export default class ParkingSpot extends Component {
         });
     }
 
-      //Opretter metode så man kan gå til parkeringspladsens detaljer 
+    //Opretter metode så man kan gå til parkeringspladsens detaljer 
   handleParkingSpotSelect = parkingspotId => {
-    this.props.navigation.navigate('ParkingDetails', { id:parkingspotId });
+    this.props.navigation.navigate('ParkingSpotDetails', { id:parkingspotId });
   };
 
     render () {
