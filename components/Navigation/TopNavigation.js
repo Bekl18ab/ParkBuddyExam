@@ -27,7 +27,7 @@ export default class MyTabs extends Component {
     }
 }
 
-const Stack = createStackNavigator()
+//const Stack = createStackNavigator()
 
 //Bruges til at skifte mellem 2 skærme på parkingspots
 /*export default class TopNavigation extends Component {
