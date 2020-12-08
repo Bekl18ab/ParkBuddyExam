@@ -20,13 +20,3 @@ export default class ParkingSpotItems extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        borderWidth: 1,
-        margin: 5,
-        padding: 10,
-        height: 30,
-        backgroundColor: '#fff',
-    },
-});
