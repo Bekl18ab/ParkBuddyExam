@@ -6,6 +6,7 @@ import ParkingSpots from './../Screens/ParkingSpots/ParkingSpots';
 import ParkingSpotDetails from '../Screens/ParkingSpots/ParkingSpotDetails';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {globalStyles} from '../Styles';
+import ParkingNavigation from './ParkingNavigation';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -18,7 +19,7 @@ export default class MyTabs extends Component {
                 </View>
                 <View>
                     <Tab.Navigator>
-                        <Tab.Screen name="Parkeringspladser" component={ParkingSpots}/>
+                        <Tab.Screen name="Parkeringspladser" component={ParkingNavigation}/>
                         <Tab.Screen name="Tilføj parkeringsplads" component={AddParkingSpots}/>
                     </Tab.Navigator>
                 </View>
@@ -27,21 +28,6 @@ export default class MyTabs extends Component {
     }
 }
 
-//const Stack = createStackNavigator()
 
-//Bruges til at skifte mellem 2 skærme på parkingspots
-/*export default class TopNavigation extends Component {
-    render() {
-        return (
-            <Stack.Navigator style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Stack.Screen name="Parkingspots" component={ParkingSpots} />
-                <Stack.Screen name="Add Parkingspots" component={AddParkingSpots} />
-                <Stack.Screen name="ParkingDetails" component={ParkingSpotDetails} />
-                <Stack.Screen name="Tilføj parkeringsplads" component={ParkingSpots} />
-                <Stack.Screen name="Parkeringspladser" component={AddParkingSpots} />
-            </Stack.Navigator>
-        );
-    }
-}
-*/
+
 

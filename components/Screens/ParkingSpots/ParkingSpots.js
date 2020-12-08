@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import ParkingSpotItems from "./ParkingSpotItems";
 import ParkingSpotDetails from './ParkingSpotDetails';
 import {globalStyles} from "../../Styles";
+import ParkingNavigation from "../../Navigation/ParkingNavigation";
 
 
 export default class ParkingSpot extends Component {
@@ -23,7 +24,7 @@ export default class ParkingSpot extends Component {
 
     //Opretter metode så man kan gå til parkeringspladsens detaljer
     handleParkingSpotSelect = parkingspotId => {
-        this.props.navigation.navigate('ParkingSpotDetails', {id: parkingspotId});
+        this.props.navigation.navigate('ParkingDetails', {id: parkingspotId});
     };
 
     render() {

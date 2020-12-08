@@ -1,11 +1,11 @@
 import React from "react"
 import {NavigationContainer} from '@react-navigation/native';
-import HomeScreen from '../Screens/HomeScreen';
-import StackNavigation from "./StackNavigation";
 import Auth from "../Authentication/Auth";
 import TopNavigation from "./TopNavigation";
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import HomeScreen from '../Screens/HomeScreen';
 import ParkingSpots from "../Screens/ParkingSpots/ParkingSpots";
+import StackNavigation from "./StackNavigation";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createMaterialBottomTabNavigator();

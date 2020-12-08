@@ -25,13 +25,13 @@ export default class SettingsScreen extends Component {
         }; */
 
         
-        handleGoToProfile = parkingspotId => {
-        this.props.navigation.navigate('Profile', { id:parkingspotId });
+        handleGoToProfile = () => {
+        this.props.navigation.navigate('Profile');
         };
 
         
-        handleGoToPayments = parkingspotId => {
-            this.props.navigation.navigate('Payments', { id:parkingspotId });
+        handleGoToPayments = () => {
+            this.props.navigation.navigate('Payments');
             };
 
     logOff = () => {
