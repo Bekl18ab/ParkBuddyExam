@@ -1,12 +1,12 @@
 import React, {Component, useEffect} from 'react'
-import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
-import {globalStyles} from '../Styles';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView} from 'react-native';
+import {globalStyles} from '../../Styles';
 import {auth} from 'firebase';
 import firebase from 'firebase';
 import {useState} from 'react';
-import {getThisAccountName} from '../helpers/Account';
+import {getThisAccountName} from '../../helpers/Account';
 import {TextInput} from 'react-native-paper';
-import {getThisUser} from '../helpers/Account';
+import {getThisUser} from '../../helpers/Account';
 import {Ionicons} from '@expo/vector-icons';
 
 
@@ -45,7 +45,7 @@ export default class SettingsScreen extends Component {
     render() {
 
         return (
-            <View style={globalStyles.container}>
+            <ScrollView style={globalStyles.container}>
                 <View style={globalStyles.header}>
                     <Text style={globalStyles.headerTitle}>ParkBuddy</Text>
                 </View>
@@ -60,7 +60,7 @@ export default class SettingsScreen extends Component {
                         <Text style={globalStyles.buttonText}>Log ud</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }

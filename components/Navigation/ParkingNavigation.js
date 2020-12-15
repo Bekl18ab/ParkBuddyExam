@@ -10,7 +10,7 @@ const Stack = createStackNavigator()
 export default class ParkingNavigation extends Component {
     render() {
         return (
-            <Stack.Navigator style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Stack.Navigator>
                 <Stack.Screen name="Parkingspots" component={ParkingSpots} />
                 <Stack.Screen name="ParkingDetails" component={ParkingSpotDetails} />
             </Stack.Navigator>

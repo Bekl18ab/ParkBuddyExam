@@ -5,7 +5,7 @@ import {
     TextInput,
     ActivityIndicator,
     StyleSheet,
-    Button
+    TouchableOpacity
 } from 'react-native';
 import firebase from 'firebase';
 import MainNavigation from '../Navigation/Main';
@@ -91,9 +91,9 @@ export default class Login extends React.Component {
             )}
         return (
         <View>
-        <Button title="Learn More" style={globalStyles.button} onPress={this.handleSubmit}>
+        <TouchableOpacity title="Log ind" style={globalStyles.button} onPress={this.handleSubmit}>
             <Text style={globalStyles.buttonText}>Log ind</Text>
-        </Button>
+        </TouchableOpacity>
         </View>
         )};
 }

@@ -27,6 +27,7 @@ const ParkingSpot = ({navigation}) => {
     
     return (
         <>
+            
             <View style={globalStyles.content}>
                 <FlatList
                     data={Object.values(parkingSpots)}
@@ -40,6 +41,7 @@ const ParkingSpot = ({navigation}) => {
                     )}
                 />
             </View>   
+            
         </>
     )
     
