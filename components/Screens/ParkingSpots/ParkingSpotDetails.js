@@ -55,7 +55,6 @@ export default class ParkingSpotDetails extends Component {
 const styles = StyleSheet.create({
     row: {
         margin: 15,
-        padding: 15,
         flexDirection: 'row',
     },
     label: {

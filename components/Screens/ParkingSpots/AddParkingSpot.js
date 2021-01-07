@@ -83,7 +83,7 @@ export default class AddParkingSpots extends Component {
                                 //
                             }}
                         />
-                    </View>                    
+                    </View>
                     <TouchableOpacity style={globalStyles.button} onPress={this.handleSave}>
                         <Text style={globalStyles.buttonText}>Tilføj parkeringsplads</Text>
                     </TouchableOpacity>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     input: {
         shadowColor: "#000000",
-        shadowOpacity: 0.5,
+        shadowOpacity: 0.2,
         shadowRadius: 2,
         flex: 1,
         backgroundColor: '#fff',

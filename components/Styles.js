@@ -21,7 +21,8 @@ export const globalStyles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        paddingVertical: 50,
+        paddingTop: 50,
+        paddingBottom: 10,
         alignItems: 'center',
         backgroundColor: '#255CA2',
     },
@@ -59,12 +60,17 @@ export const globalStyles = StyleSheet.create({
     },
     label:{
         shadowColor: "#000000",
-        shadowOpacity: 0.5,
+        shadowOpacity: 0.2,
         shadowRadius: 2,
         backgroundColor: '#fff',
         marginHorizontal: 2,
         marginVertical: 7,
         padding: 10,
+    },
+    logo: {
+        width: 150,
+        height: 50,
+        resizeMode: 'contain',
     },
     Text: {
         fontFamily: "poppins",

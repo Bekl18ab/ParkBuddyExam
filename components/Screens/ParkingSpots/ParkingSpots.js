@@ -9,7 +9,7 @@ import ParkingNavigation from "../../Navigation/ParkingNavigation";
 
 const ParkingSpot = ({navigation}) => {
     const [parkingSpots, setParkingSpots] = useState([]);
-    
+
     useEffect(() => {
         firebase
             .database()
@@ -21,13 +21,11 @@ const ParkingSpot = ({navigation}) => {
 
     const handleParkingSpotSelect = (parkingSpotId) => {
         navigation.navigate('ParkingDetails', {id: parkingSpotId});
-
     }
 
-    
+
     return (
         <>
-            
             <View style={globalStyles.content}>
                 <FlatList
                     data={Object.values(parkingSpots)}
@@ -40,11 +38,10 @@ const ParkingSpot = ({navigation}) => {
                         />
                     )}
                 />
-            </View>   
-            
+            </View>
         </>
     )
-    
+
 }
 
 export default ParkingSpot

@@ -1,55 +1,60 @@
 import React from "react"
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import HomeScreen from '../Screens/HomeScreen';
 import Auth from "../Authentication/Auth";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import {MaterialIcons} from "react-native-vector-icons";
+import Icon from 'react-native-vector-icons/Ionicons';
 import TopNavigation from "./TopNavigation";
 import ParkingSpots from "../Screens/ParkingSpots/ParkingSpots";
 import StackNavigation from "./StackNavigation";
+import SettingsScreen from "../Screens/ProfileScreens/SettingsScreen";
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
-const MainTabs = () => (
+const MyTabs = () => (
     <Tab.Navigator
-            initialRouteName="Home"
-            initialRoute={ParkingSpots} // Sørg for dette er initial route
-            activeColor="#fff"
-            shifting={true}
-            inactiveColor="#bbb"
-            barStyle={{backgroundColor: '#255CA2',}}
-        >
+        initialRouteName="Home"
+        initialRoute={HomeScreen} // Sørg for dette er initial route
+        activeColor="#fff"
+        shifting={true}
+        inactiveColor="#bbb"
+        barStyle={{backgroundColor: '#255CA2',}}
+    >
         <Tab.Screen
-        name="Parkingspots"
-        component={TopNavigation}
-        options={{
-            tabBarLabel: 'Parkeringer',
-            tabBarColor: '#2568a2',
-            tabBarIcon: ({color}) =>(
-            <Icon name="car" size={30} color={color} />
-            )}}
+            name="Parkingspots"
+            component={TopNavigation}
+            options={{
+                tabBarLabel: 'Parkeringer',
+                tabBarColor: '#2568a2',
+                tabBarIcon: ({color}) => (
+                    <Icon name="ios-car" color={color} size={24}/>
+                ),
+            }}
         />
         <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-            tabBarLabel: 'Hjem',
-            tabBarColor: '#255ca2',
-            tabBarIcon: ({color}) =>(
-            <Icon name="home" size={30} color={color} />
-            )}}
+            name="Home"
+            component={HomeScreen}
+            options={{
+                tabBarLabel: 'Hjem',
+                tabBarColor: '#255ca2',
+                tabBarIcon: ({color}) => (
+                    <Icon name="ios-home" color={color} size={24}/>
+                ),
+            }}
         />
         <Tab.Screen
-        name="Profil"
-        component={StackNavigation}
-        options={{
-            tabBarIcon: ({color}) =>(
-            <MaterialIcons name="person" size={40} color={color} />
-            )}}
+            name="Profil"
+            component={StackNavigation}
+            options={{
+                tabBarLabel: 'Profil',
+                tabBarColor: '#2548a2',
+                tabBarIcon: ({color}) => (
+                    <Icon name="ios-person" color={color} size={24}/>
+                ),
+            }}
         />
     </Tab.Navigator>
-)
+);
 
 const MainNavigation = ({auth}) => {
     return (
@@ -57,7 +62,7 @@ const MainNavigation = ({auth}) => {
         {/* Ternary expression (simpel syntaks for en if-else. ? betyder 'hvis true'. : betyder 'hvis false') */}
         {auth ? (
             <NavigationContainer>
-                <MainTabs />
+                <MyTabs />
             </NavigationContainer>
         ) : (
             <Auth />

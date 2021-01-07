@@ -1,5 +1,5 @@
 import React, {Component, useEffect} from 'react'
-import {View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity, ScrollView} from 'react-native';
 import {globalStyles} from '../../Styles';
 import {auth} from 'firebase';
 import firebase from 'firebase';
@@ -24,12 +24,12 @@ export default class SettingsScreen extends Component {
             this.props.navigation.navigate('Profile');
         }; */
 
-        
-        handleGoToProfile = () => {
-        this.props.navigation.navigate('Profile');
-        };
 
-        
+        // handleGoToProfile = () => {
+        // this.props.navigation.navigate('Profile');
+        // };
+
+
         handleGoToPayments = () => {
             this.props.navigation.navigate('Payments');
             };
@@ -47,7 +47,7 @@ export default class SettingsScreen extends Component {
         return (
             <ScrollView style={globalStyles.container}>
                 <View style={globalStyles.header}>
-                    <Text style={globalStyles.headerTitle}>ParkBuddy</Text>
+                    <Image style={globalStyles.logo} source={require('../../../assets/ParkBuddy.png')}/>
                 </View>
                 <View style={globalStyles.content}>
                     <TouchableOpacity style={globalStyles.button} onPress={this.handleGoToProfile}>
