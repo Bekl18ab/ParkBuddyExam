@@ -1,19 +1,23 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image} from 'react-native';
-import Constants from 'expo-constants';
 import MapView, {Marker} from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import {Accuracy} from "expo-location";
 import {TextInput} from 'react-native-paper';
-import {TabActions} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import {globalStyles} from '../Styles';
 
 // Denne er kun midlertidig indtil vi får lavet en Google Maps!
 export default class HomeScreen extends React.Component {
     mapViewRef = React.createRef();
+
+    // Denne constructor er skyld i advarslen med "This synthetic event is reused for performance reasons", men er nødvendig for at navigationen virker.
+    constructor(props) {
+        super(props);
+    
+        this.handleParkingSpotSelect = this.handleParkingSpotSelect.bind(this);
+    }
 
     state = {
         //Undersøger om der er tilladelse til lokation
@@ -92,6 +96,10 @@ export default class HomeScreen extends React.Component {
         this.setState({selectedAddress});
     };
 
+    handleParkingSpotSelect (parkingSpotId) {
+        this.props.navigation.navigate( 'Parkeringspladser', {id: parkingSpotId});
+    }
+
     closeInfoBox = () =>
         this.setState({selectedCoordinate: null, selectedAddress: null});
 
@@ -129,8 +137,6 @@ export default class HomeScreen extends React.Component {
         const {
             userMarkerCoordinates, selectedCoordinate, selectedAddress, currentLocation
         } = this.state;
-        //Navigation??
-        // const jumpToAction = TabActions.jumpTo('Parkingspots', { component: 'Parkingspot' });
 
         return (
             <View style={globalStyles.container}>
@@ -159,9 +165,9 @@ export default class HomeScreen extends React.Component {
                             coordinate={{latitude: 55.851695, longitude: 12.099419}}
                             title="Min parkeringsplads"
                             description="Du kan holde i min indkørsel"
-                            // onPress={() => navigation.dispatch(jumpToAction)}
+                            onPress={this.handleParkingSpotSelect}
                         >
-                            <FontAwesome5Icon name={"parking"} size={26} color={"lightgreen"}/>
+                            <MaterialCommunityIcons name={"map-marker-radius"} size={26} color={"lightgreen"}/>
                         </Marker>
                         <Marker
                             coordinate={{latitude: 55.673035, longitude: 12.408756}}
@@ -175,14 +181,14 @@ export default class HomeScreen extends React.Component {
                             title="Husvej"
                             description="Du kan holde i centrum af København"
                         >
-                            <MaterialCommunityIcons name={"parking"} size={26} color={"lightgreen"}/>
+                            <MaterialCommunityIcons name={"map-marker-radius"} size={26} color={"lightgreen"}/>
                         </Marker>
                         <Marker
                             coordinate={{latitude: 55.5122017, longitude: 11.9691109}}
                             title="Parkeringsplads"
                             description="Postnummer 4140"
                         >
-                            <MaterialCommunityIcons name={"marker-check"} size={26} color={"lightgreen"}/>
+                            <MaterialCommunityIcons name={"map-marker-radius"} size={26} color={"lightgreen"}/>
                         </Marker>
                         {userMarkerCoordinates.map((coordinate, index) => (
                             <Marker

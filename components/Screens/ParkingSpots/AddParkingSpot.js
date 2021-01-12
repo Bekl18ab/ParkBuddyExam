@@ -10,6 +10,9 @@ export default class AddParkingSpots extends Component {
         adresse: '',
         pris: '',
         ledighed: '',
+        lat: '',
+        long: '',
+
 
       };
 
@@ -20,24 +23,29 @@ export default class AddParkingSpots extends Component {
 
     handleLedighedChange = text => this.setState({ledighed: text});
 
+    handleLatChange = text => this.setState({lat: text});
+
+    handleLongChange = text => this.setState({long: text});
+
+
     //Opretter en metoder, som gør det muligt at gemme den nyoprettede parkeringsplads og få den i firebase
     handleSave = () => {
-        const {adresse, pris, ledighed} = this.state;
+        const {adresse, pris, ledighed, lat, long} = this.state;
         try {
             const reference = firebase
                 .database()
                 .ref('/ParkingSpots/')
-                .push({adresse, pris, ledighed});
+                .push({adresse, pris, ledighed, lat, long});
             Alert.alert('Parkeringsplads gemt!');
-            this.setState({adresse: '', pris: '', ledighed: '',});
-            this.props.navigation.navigate('ParkingSpots')
+            this.setState({adresse: '', pris: '', ledighed: '', lat: '', long: '',});
+            this.navigation.navigate('ParkingSpots')
         } catch (e) {
             console.log(e);
         }
     };
 
     render() {
-        const {adresse, pris, ledighed} = this.state;
+        const {adresse, pris, ledighed, lat, long} = this.state;
         //I return er der et tekstinput så de 3 forskellige states kan udfyldes og oprettes
         return (
             <View style={globalStyles.content}>
@@ -75,6 +83,34 @@ export default class AddParkingSpots extends Component {
                         <TextInput
                             value={ledighed}
                             onChangeText={this.handleLedighedChange}
+                            style={styles.input}
+                            onFocus={() => {
+                                //
+                            }}
+                            onBlur={() => {
+                                //
+                            }}
+                        />
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.textLabel}>Latitude:</Text>
+                        <TextInput
+                            value={lat}
+                            onChangeText={this.handleLatChange}
+                            style={styles.input}
+                            onFocus={() => {
+                                //
+                            }}
+                            onBlur={() => {
+                                //
+                            }}
+                        />
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.textLabel}>Longtitude:</Text>
+                        <TextInput
+                            value={long}
+                            onChangeText={this.handleLongChange}
                             style={styles.input}
                             onFocus={() => {
                                 //

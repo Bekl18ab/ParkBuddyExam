@@ -8,13 +8,14 @@ import TopNavigation from "./TopNavigation";
 import ParkingSpots from "../Screens/ParkingSpots/ParkingSpots";
 import StackNavigation from "./StackNavigation";
 import SettingsScreen from "../Screens/ProfileScreens/SettingsScreen";
+import HomeScreenNavigation from "../Navigation/HomeScreenNavigation";
 
 const Tab = createMaterialBottomTabNavigator();
 
 const MyTabs = () => (
     <Tab.Navigator
         initialRouteName="Home"
-        initialRoute={HomeScreen} // Sørg for dette er initial route
+        initialRoute={HomeScreenNavigation} // Sørg for dette er initial route
         activeColor="#fff"
         shifting={true}
         inactiveColor="#bbb"
@@ -33,7 +34,7 @@ const MyTabs = () => (
         />
         <Tab.Screen
             name="Home"
-            component={HomeScreen}
+            component={HomeScreenNavigation}
             options={{
                 tabBarLabel: 'Hjem',
                 tabBarColor: '#255ca2',

@@ -20,19 +20,9 @@ export default class SettingsScreen extends Component {
         this.props.navigation.navigate('Profile');
     };
 
-        /*handleGoToProfile = () => {
-            this.props.navigation.navigate('Profile');
-        }; */
-
-
-        // handleGoToProfile = () => {
-        // this.props.navigation.navigate('Profile');
-        // };
-
-
-        handleGoToPayments = () => {
-            this.props.navigation.navigate('Payments');
-            };
+    handleGoToPayments = () => {
+        this.props.navigation.navigate('Payments');
+    };
 
     logOff = () => {
         auth()
@@ -40,15 +30,12 @@ export default class SettingsScreen extends Component {
             .then(() => console.log('User signed out!'));
     }
 
-    // Oprettelse af FlatList, hvor den gemmer elementer i Item, som så kan bruges oppe i fremvisning af FlatListe funktionen
+    // Oprettelse af FlatList, hvor den gemmer elementer i Item, som sÃ¥ kan bruges oppe i fremvisning af FlatListe funktionen
 
     render() {
 
         return (
             <ScrollView style={globalStyles.container}>
-                <View style={globalStyles.header}>
-                    <Image style={globalStyles.logo} source={require('../../../assets/ParkBuddy.png')}/>
-                </View>
                 <View style={globalStyles.content}>
                     <TouchableOpacity style={globalStyles.button} onPress={this.handleGoToProfile}>
                         <Text style={globalStyles.buttonText}>Personlige Oplysninger</Text>
