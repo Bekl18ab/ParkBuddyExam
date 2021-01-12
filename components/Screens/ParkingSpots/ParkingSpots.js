@@ -2,9 +2,7 @@ import React, {Component, useEffect, useMemo, useState} from 'react';
 import {StyleSheet, Text, View, FlatList, Image, SafeAreaView, Button} from 'react-native';
 import firebase from 'firebase';
 import ParkingSpotItems from "./ParkingSpotItems";
-import ParkingSpotDetails from './ParkingSpotDetails';
 import {globalStyles} from "../../Styles";
-import ParkingNavigation from "../../Navigation/ParkingNavigation";
 
 
 const ParkingSpot = ({navigation}) => {

@@ -5,6 +5,7 @@ import {globalStyles} from '../Styles';
 import ParkingNavigation from './ParkingNavigation';
 import HomeScreen from '../Screens/HomeScreen';
 import ParkingSpot from '../Screens/ParkingSpots/ParkingSpots';
+import ParkingSpotDetails from '../Screens/ParkingSpots/ParkingSpotDetails';
 
 const Tab = createStackNavigator();
 
@@ -18,6 +19,7 @@ export default class HomeScreenNavigation extends Component {
                 <Tab.Navigator>
                     <Tab.Screen options={{headerShown: false}} name="Hjem" component={HomeScreen}/>
                     <Tab.Screen name="Parkeringspladser" component={ParkingSpot}/>
+                    <Tab.Screen name="ParkingDetails" component={ParkingSpotDetails} />
                 </Tab.Navigator>
             </View>
 

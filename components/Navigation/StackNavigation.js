@@ -6,13 +6,12 @@ import SettingsScreen from '../Screens/ProfileScreens/SettingsScreen';
 import Payments from "../Screens/ProfileScreens/Payments";
 import {globalStyles} from "../Styles";
 import {Image, View} from "react-native";
-import ParkingNavigation from "./ParkingNavigation";
-import AddParkingSpots from "../Screens/ParkingSpots/AddParkingSpot";
+
 // import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator()
 
-//Bruges til at skifte mellem 2 skÃ¦rme pÃ¥ parkingspots
+//Bruges til at skifte mellem 2 skærme på parkingspots
 export default class StackNavigation extends Component {
     render() {
         return (

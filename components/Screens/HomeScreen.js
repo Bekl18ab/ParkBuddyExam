@@ -7,12 +7,12 @@ import {Accuracy} from "expo-location";
 import {TextInput} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {globalStyles} from '../Styles';
+import firebase from 'firebase';
 
 // Denne er kun midlertidig indtil vi får lavet en Google Maps!
 export default class HomeScreen extends React.Component {
     mapViewRef = React.createRef();
 
-    // Denne constructor er skyld i advarslen med "This synthetic event is reused for performance reasons", men er nødvendig for at navigationen virker.
     constructor(props) {
         super(props);
     
@@ -32,6 +32,8 @@ export default class HomeScreen extends React.Component {
         },
         //Ser på de fastsatte markers fra brugeren
         userMarkerCoordinates: [],
+        //
+        parkingSpotMarkers: {}, 
         //Ser på koordinaten af den valgte markør
         selectedCoordinate: null,
         //Finder adressen på den valgte markør
@@ -45,6 +47,13 @@ export default class HomeScreen extends React.Component {
 
     componentDidMount = async () => {
         await this.getLocationPermission();
+        //firebase parkingSpot Markers
+        firebase
+            .database()
+            .ref('/ParkingSpots')
+            .on('value', snapshot => {
+                this.setState({parkingSpotMarkers: snapshot.val()})
+            });
     };
 
     updateLocation = async () => {
@@ -97,7 +106,7 @@ export default class HomeScreen extends React.Component {
     };
 
     handleParkingSpotSelect (parkingSpotId) {
-        this.props.navigation.navigate( 'Parkeringspladser', {id: parkingSpotId});
+        this.props.navigation.navigate( 'ParkingDetails', {id: parkingSpotId});
     }
 
     closeInfoBox = () =>
@@ -135,7 +144,7 @@ export default class HomeScreen extends React.Component {
 
     render() {
         const {
-            userMarkerCoordinates, selectedCoordinate, selectedAddress, currentLocation
+            userMarkerCoordinates, selectedCoordinate, selectedAddress, currentLocation, parkingSpotMarkers
         } = this.state;
 
         return (
@@ -161,36 +170,19 @@ export default class HomeScreen extends React.Component {
                             latitudeDelta: currentLocation.latitudeDelta,
                             longitudeDelta: currentLocation.longitudeDelta
                         }}>
+
+                        {Object.keys(parkingSpotMarkers).map(marker => 
                         <Marker
-                            coordinate={{latitude: 55.851695, longitude: 12.099419}}
-                            title="Min parkeringsplads"
-                            description="Du kan holde i min indkørsel"
-                            onPress={this.handleParkingSpotSelect}
-                        >
-                            <MaterialCommunityIcons name={"map-marker-radius"} size={26} color={"lightgreen"}/>
-                        </Marker>
-                        <Marker
-                            coordinate={{latitude: 55.673035, longitude: 12.408756}}
-                            title="Fulgevejs parkeringsplads"
-                            description="Du kan holde i grusset"
-                        >
-                            <MaterialCommunityIcons name={"map-marker-radius"} size={26} color={"lightgreen"}/>
-                        </Marker>
-                        <Marker
-                            coordinate={{latitude: 55.674082, longitude: 12.598108}}
-                            title="Husvej"
-                            description="Du kan holde i centrum af København"
-                        >
-                            <MaterialCommunityIcons name={"map-marker-radius"} size={26} color={"lightgreen"}/>
-                        </Marker>
-                        <Marker
-                            coordinate={{latitude: 55.5122017, longitude: 11.9691109}}
-                            title="Parkeringsplads"
-                            description="Postnummer 4140"
-                        >
-                            <MaterialCommunityIcons name={"map-marker-radius"} size={26} color={"lightgreen"}/>
-                        </Marker>
-                        {userMarkerCoordinates.map((coordinate, index) => (
+                        key={parkingSpotMarkers[marker].adresse}
+                        coordinate={{latitude: parseFloat(parkingSpotMarkers[marker].lat, 10), longitude: parseFloat(parkingSpotMarkers[marker].long, 10)}}
+                        title={parkingSpotMarkers[marker].adresse}
+                        description="Du kan holde i min indkørsel"
+                        onPress={() => this.handleParkingSpotSelect(marker)}
+                    >
+                        <MaterialCommunityIcons name={"map-marker-radius"} size={26} color={"lightgreen"}/>
+                    </Marker>
+                         )}
+                         {userMarkerCoordinates.map((coordinate, index) => (
                             <Marker
                                 coordinate={coordinate}
                                 key={index.toString()}
