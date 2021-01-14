@@ -24,6 +24,10 @@ export default class SettingsScreen extends Component {
         this.props.navigation.navigate('Payments');
     };
 
+    handleGoToRentedSpots = () => {
+        this.props.navigation.navigate('RentedSpots');
+    };
+
     logOff = () => {
         auth()
             .signOut()
@@ -39,6 +43,9 @@ export default class SettingsScreen extends Component {
                 <View style={globalStyles.content}>
                     <TouchableOpacity style={globalStyles.button} onPress={this.handleGoToProfile}>
                         <Text style={globalStyles.buttonText}>Personlige Oplysninger</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={globalStyles.button} onPress={this.handleGoToRentedSpots}>
+                        <Text style={globalStyles.buttonText}>Lejede parkeringspladser</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={globalStyles.button} onPress={this.handleGoToPayments}>
                         <Text style={globalStyles.buttonText}>Betalinger og udbetalinger</Text>

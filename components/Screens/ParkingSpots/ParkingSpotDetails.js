@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
 import firebase from 'firebase';
 import {globalStyles} from "../../Styles";
+
 
 export default class ParkingSpotDetails extends Component {
 
@@ -23,6 +24,10 @@ export default class ParkingSpotDetails extends Component {
             .on('value', parkingSpot => {
                 this.setState({parkingDetails: parkingSpot.val()});
             });
+    };
+
+    handleRentedSpot = () => {
+
     };
 
     render() {
@@ -47,6 +52,9 @@ export default class ParkingSpotDetails extends Component {
                     <Text style={styles.label}> Ledighed: </Text>
                     <Text style={styles.value}> {parkingDetails.ledighed} </Text>
                 </View>
+                <TouchableOpacity style={globalStyles.button}>
+                        <Text style={globalStyles.buttonText}>Lej parkeringsplads</Text>
+                    </TouchableOpacity>
             </ScrollView>
         );
     }

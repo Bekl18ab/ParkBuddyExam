@@ -4,6 +4,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import Profile from '../Screens/ProfileScreens/Profile';
 import SettingsScreen from '../Screens/ProfileScreens/SettingsScreen';
 import Payments from "../Screens/ProfileScreens/Payments";
+import RentedSpots from "../Screens/ProfileScreens/RentedSpots";
 import {globalStyles} from "../Styles";
 import {Image, View} from "react-native";
 
@@ -23,6 +24,7 @@ export default class StackNavigation extends Component {
                     <Stack.Screen name="Settings" component={SettingsScreen} />
                     <Stack.Screen name="Profile" component={Profile} />
                     <Stack.Screen name="Payments" component={Payments} />
+                    <Stack.Screen name="RentedSpots" component={RentedSpots} />
                 </Stack.Navigator>
             </View>
         );
